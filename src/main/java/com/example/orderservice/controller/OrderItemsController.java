@@ -21,7 +21,9 @@ public class OrderItemsController {
 
     //Build Add OrderItems REST API
     @PostMapping("/user/{userId}")
-    public ResponseEntity<OrderItemsDto> addItemsToCart(@PathVariable("userId") Long userId,@RequestBody OrderItemsDto newAddedItems){
+    public ResponseEntity<OrderItemsDto> addItemsToCart(@PathVariable("userId") Long userId, @RequestBody OrderItemsDto newAddedItems){
+        System.out.println("🔹 Received OrderItemsDto: " + newAddedItems);
+        System.out.println("🔹 User ID: " + userId);
         OrderItemsDto savedorderDto = orderItemsService.addItemsToCart(newAddedItems.getOrder().getId(), newAddedItems.getProduct().getId(), newAddedItems.getQuantity(), userId);
         return new ResponseEntity<>(savedorderDto, HttpStatus.CREATED);
     }
