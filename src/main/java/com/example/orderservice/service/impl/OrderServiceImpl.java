@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +42,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public OrderDto getOrderByUserId(Long userId) {
+        Optional<Order> optionalOrder = orderRepository.findFirstByUser_IdOrderByIdDesc(userId);
+        if ( optionalOrder.isPresent()) {
+            Order order = optionalOrder.get();
+            return OrderMapper.mapToOrderDto(order);
+        }
+        else {
+            throw new ResourceNotFoundException("Order not found for user id: " + userId);
+        }
+    }
+
+    @Override
     public OrderDto updateOrder(Long id, OrderDto updatedOrder) {
         Order order = orderRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Order is not exists with given id." + id));
 
@@ -59,4 +72,5 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Order is not exists with given id." + id));
         orderRepository.deleteById(id);
     }
+
 }

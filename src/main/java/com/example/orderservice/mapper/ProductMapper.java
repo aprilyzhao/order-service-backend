@@ -8,7 +8,11 @@ public class ProductMapper {
         return new ProductDto(
                 product.getId(),
                 product.getName(),
-                product.getPrice()
+                product.getPrice(),
+                product.getImageUrl(),
+                product.getNewArrival(),
+                product.getTags(),
+                product.getDescription()
         );
     }
 
@@ -16,7 +20,11 @@ public class ProductMapper {
         return new Product(
                 productDto.getId(),
                 productDto.getName(),
-                productDto.getPrice()
+                productDto.getPrice(),
+                productDto.getImageUrl(),
+                productDto.getNewArrival(),
+                productDto.getTags(),
+                productDto.getDescription()
         );
     }
 }

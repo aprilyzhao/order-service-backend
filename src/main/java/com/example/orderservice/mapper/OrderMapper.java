@@ -9,7 +9,8 @@ public class OrderMapper {
                 order.getId(),
                 order.getUser(),
                 order.getOrderItems(),
-                order.getTotalPrice()
+                order.getTotalPrice(),
+                order.getStatus()
         );
     }
 
@@ -18,7 +19,8 @@ public class OrderMapper {
                 orderDto.getId(),
                 orderDto.getUser(),
                 orderDto.getOrderItems(),
-                orderDto.getTotalPrice()
+                orderDto.getTotalPrice(),
+                orderDto.getStatus()
         );
     }
 }

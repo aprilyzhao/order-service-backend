@@ -12,13 +12,14 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("api/orders")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 
     OrderService orderService;
 
     //Build Create Order REST API
     @PostMapping
-    public ResponseEntity<OrderDto> createOrder( OrderDto orderDto){
+    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto orderDto){
         OrderDto savedOrder = orderService.createOrder(orderDto);
         return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
     }
@@ -30,6 +31,11 @@ public class OrderController {
         return ResponseEntity.ok(orderDto);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<OrderDto> getOrderByUserId(@PathVariable("userId") Long id){
+        OrderDto orderDto = orderService.getOrderByUserId(id);
+        return ResponseEntity.ok(orderDto);
+    }
     //Build Get All Order Rest API
     @GetMapping
     public ResponseEntity<List<OrderDto>> getAllOrders(){

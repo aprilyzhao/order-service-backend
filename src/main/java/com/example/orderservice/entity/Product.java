@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,5 +26,18 @@ public class Product {
 
     @Column(name="product_price", nullable = false)
     private Double price;
+
+    @Column(nullable = false)
+    private String imageUrl;
+
+    @Column
+    private Boolean newArrival;
+
+    @Column
+    @ManyToMany
+    private List<Tag> tags;
+
+    @Column
+    private String description;
 
 }

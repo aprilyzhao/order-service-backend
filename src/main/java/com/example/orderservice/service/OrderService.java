@@ -12,7 +12,10 @@ public interface OrderService {
 
     OrderDto getOrderById(Long id);
 
+    OrderDto getOrderByUserId(Long userId);
+
     OrderDto updateOrder(Long id, OrderDto updatedOrder);
 
     void deleteOrder(Long id);
+
 }

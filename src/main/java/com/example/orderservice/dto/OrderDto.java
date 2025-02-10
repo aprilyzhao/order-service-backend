@@ -18,4 +18,5 @@ public class OrderDto {
     private User user;
     private List<OrderItems> orderItems;
     private Double totalPrice;
+    private String status;
 }

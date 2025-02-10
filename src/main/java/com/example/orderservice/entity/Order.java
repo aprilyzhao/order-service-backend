@@ -1,5 +1,6 @@
 package com.example.orderservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,10 +28,14 @@ public class Order {
     //One-to-many relationship does not store as column in parent table
     @OneToMany
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private List<OrderItems> orderItems;
 
     @Column(name = "total_price")
     private Double totalPrice;
+
+    @Column(name="order_status")
+    private String status;
 
     public void setTotalPrice() {
         if(orderItems != null) {
