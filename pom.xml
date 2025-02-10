@@ -12,6 +12,7 @@
 	<artifactId>order-service-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>order-service-backend</name>
+	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot Order Service Management System</description>
 	<url/>
 	<licenses>
